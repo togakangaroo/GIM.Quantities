@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIM.Quantities", "GIM.Quantities\GIM.Quantities.csproj", "{AD611001-95CB-463E-B77A-C316CF26BB86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIM.Quantities.Tests", "GIM.Quantities.Tests\GIM.Quantities.Tests.csproj", "{B2C80D0B-C11C-403F-B2CA-2530E23BAB92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD611001-95CB-463E-B77A-C316CF26BB86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD611001-95CB-463E-B77A-C316CF26BB86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD611001-95CB-463E-B77A-C316CF26BB86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD611001-95CB-463E-B77A-C316CF26BB86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C80D0B-C11C-403F-B2CA-2530E23BAB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C80D0B-C11C-403F-B2CA-2530E23BAB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C80D0B-C11C-403F-B2CA-2530E23BAB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C80D0B-C11C-403F-B2CA-2530E23BAB92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
