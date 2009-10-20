@@ -53,13 +53,14 @@
     <Compile Include="Display\Registration\ReadyForDefaultsUnitDisplayRegistration.cs" />
     <Compile Include="Display\Registration\UnitDisplayRegistrationTagsAdder.cs" />
     <Compile Include="Display\SimpleEnglishPluralizationConvention.cs" />
+    <Compile Include="Display\SimpleQuantityUnitDisplayFormatter.cs" />
     <Compile Include="Display\TaggedUnit.cs" />
     <Compile Include="Display\Registration\UnitDisplayRegistrationStarter.cs" />
     <Compile Include="Display\ProvideUnitDisplaysFactory.cs" />
     <Compile Include="Display\UnknownUnitDisplayFormatException.cs" />
     <Compile Include="SimpleQuantity.cs" />
     <Compile Include="SpecificUnits\MassUnitKilograms.cs" />
-    <Compile Include="Display\UnitDisplayFormatter.cs" />
+    <Compile Include="Display\SimpleQuantityFormatProvider.cs" />
     <Compile Include="Display\PluralityChecker.cs" />
     <Compile Include="SpecificUnits\VolumeUnitGallons.cs" />
     <Compile Include="SpecificUnits\VolumeUnitLiters.cs" />

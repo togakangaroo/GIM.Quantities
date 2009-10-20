@@ -24,8 +24,9 @@ namespace GIM.Quantities {
             return ToString("{0} {1}");
         }
         public string ToString(string format) {
-            var numPlaceholders = new Regex(@"{\d+(:\w+)?}").Matches(format).Count;
-            return numPlaceholders.ToString();
+            //var formatProvider = new SimpleQuantityFormatProvider(null);
+            //return String.Format(formatProvider, format, Mass.Amount, Mass.Unit, Volume.Unit, Volume.Amount);
+            return "";
         }
 
     }

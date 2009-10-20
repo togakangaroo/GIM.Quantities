@@ -4,13 +4,13 @@ using GIM.Quantities.Display;
 namespace GIM.Quantities {
     public abstract class SimpleQuantity<UOM_TYPE> where UOM_TYPE : UnitOfMeasure {
         private readonly double _amount;
-        private readonly MassUnitFormatProvider _formatProvider;
+        private readonly SimpleQuantityFormatProvider<UOM_TYPE> _formatProvider;
         private readonly UOM_TYPE _unit;
 
         public SimpleQuantity(double amount, UOM_TYPE unit) {
             _unit = unit;
             _amount = amount;
-            _formatProvider = new MassUnitFormatProvider(this as Mass);
+            _formatProvider = new SimpleQuantityFormatProvider<UOM_TYPE>(this);
         }
         public double Amount {
             get { return _amount; }
