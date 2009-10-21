@@ -7,8 +7,13 @@ using System.Linq;
 namespace GIM.Quantities.Tests.Display {
     public class When_formatting_density_with_ToString {
         Density lbPerGal5 = new Density(10.Pounds(), 2.Gallons());
-        [Test] public void default_is_n2_single_number_short_units() {
+        Density lbPerGal1 = new Density(1.Pounds(), 1.Gallons());
+        [Test]
+        public void default_is_n2_single_number_short_units() {
             lbPerGal5.ToString().ShouldEqual("5.00 lbs/gal");
+        }
+        [Test] public void when_numerator_is_singular_will_be_formatted_that_way() {
+            lbPerGal1.ToString("{0:n0} {1:long}").ShouldEqual("1 pound per gallon");
         }
         [Test]
         public void can_get_single_numeric_value_only_with_custom_formatting() {
@@ -17,8 +22,8 @@ namespace GIM.Quantities.Tests.Display {
         }
         [Test]
         public void can_add_custom_formatting_between_number_and_unit() {
-            string pattern = "{0} - {1}";
-            lbPerGal5.ToString(pattern).ShouldEqual("5.00 - lbs/gal", "Pattern: {0}".Use(pattern));
+            string pattern = "{0:n1} - {1}";
+            lbPerGal5.ToString(pattern).ShouldEqual("5.0 - lbs/gal", "Pattern: {0}".Use(pattern));
         }
         [Test]
         public void can_custom_format_numeric_component() {
@@ -27,12 +32,12 @@ namespace GIM.Quantities.Tests.Display {
         }
         [Test]
         public void can_custom_format_unit_component() {
-            string pattern = "{0} {1:long}";
+            string pattern = "{0:n2} {1:long}";
             lbPerGal5.ToString(pattern).ShouldEqual("5.00 pounds per gallon", "Pattern: {0}".Use(pattern));
         }
         [Test]
         public void can_custom_format_each_unit_component() {
-            string pattern = "{0} {1:short} per {2:long}";
+            string pattern = "{0:n2} {1:short} per {2:long}";
             lbPerGal5.ToString(pattern).ShouldEqual("5.00 lbs per gallon", "Pattern: {0}".Use(pattern));
         }
         [Test]

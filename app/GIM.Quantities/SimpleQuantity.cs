@@ -4,7 +4,7 @@ using GIM.Quantities.Display;
 namespace GIM.Quantities {
     public abstract class SimpleQuantity<UOM_TYPE> where UOM_TYPE : UnitOfMeasure {
         private readonly double _amount;
-        private readonly SimpleQuantityFormatProvider<UOM_TYPE> _formatProvider;
+        protected readonly SimpleQuantityFormatProvider<UOM_TYPE> _formatProvider;
         private readonly UOM_TYPE _unit;
 
         public SimpleQuantity(double amount, UOM_TYPE unit) {
@@ -21,12 +21,9 @@ namespace GIM.Quantities {
             }
         }
         public override string ToString() {
-            return this.ToString(UnitDisplay.Short);
-        }
-        public string ToString(IDisplayUnits displayFormat) {
             return ToString("{0:n0} {1}");
         }
-        public string ToString(string format) {            
+        public virtual string ToString(string format) {            
             return String.Format(_formatProvider, format, Amount, Unit);
         }
     }

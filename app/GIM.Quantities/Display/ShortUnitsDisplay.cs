@@ -3,23 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace GIM.Quantities.Display {
+    public class PredicateFunctionHash {
+        
+    }
     public class ShortUnitsDisplay : IDisplayUnits {
-        IDictionary<TaggedUnit, string> _typeNames = new Dictionary<TaggedUnit, string>() {
-            {new TaggedUnit(MassUnit.Pounds, UnitPlurality.Single), "lb"},
-            {new TaggedUnit(MassUnit.Kilograms, UnitPlurality.Single), "kg"},
-            {new TaggedUnit(VolumeUnit.Gallons, UnitPlurality.Single), "gal"},
-            {new TaggedUnit(VolumeUnit.Liters, UnitPlurality.Single), "ltr"},
-        };
-        PluralityChecker _plurality = new PluralityChecker();
-        IPluralizationConvention _pluralizationConvention = new SimpleEnglishPluralizationConvention();
-
-        public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { 
-            return _typeNames.FirstOrDefault(kv => kv.Key.Unit == _unit).IfNotNull(kv =>
-                    _pluralizationConvention.Convert(kv.Value, _plurality.GetPlurality(amount)));
+        IDictionary<Func<double, UnitOfMeasure, bool>, Func<double, UnitOfMeasure, string>> _typeNames;
+        static PluralityChecker _plurality = new PluralityChecker();
+        static IPluralizationConvention _pluralizationConvention = new SimpleEnglishPluralizationConvention();
+        private static string Pl(double d, string s) {
+            return _pluralizationConvention.Convert(s, _plurality.GetPlurality(d));
+        }
+        public ShortUnitsDisplay() {
+            _typeNames = new Dictionary<Func<double, UnitOfMeasure, bool>, Func<double, UnitOfMeasure, string>>() {
+                {(d,u) => u==MassUnit.Pounds, (d,u) =>Pl(d,"lb")},
+                {(d,u) => u==MassUnit.Kilograms, (d,u) =>Pl(d,"kg")},
+                {(d,u) => u==VolumeUnit.Gallons, (d,u) =>Pl(d,"gal")},
+                {(d,u) => u==VolumeUnit.Liters, (d,u) =>Pl(d,"ltr")},
+                {(d,u) => u is DensityUnit, (d,u) =>{
+                    var x = u as DensityUnit;
+                    return "{0}/{1}".Use(
+                        GetUnitDisplayFor(d, x.MassUnit),
+                        GetUnitDisplayFor(UnitPlurality.Single.Example, x.VolumeUnit));
+                }},
+            };            
         }
 
-        public bool MatchesFormatTag(string tag) {
-            return String.Equals("short", tag, StringComparison.InvariantCultureIgnoreCase);
+        public string GetUnitDisplayFor(double amount, UnitOfMeasure unit) { 
+            return _typeNames.FirstOrDefault(kv => kv.Key(amount, unit)).IfNotNull(kv => kv.Value(amount, unit));
         }
     }
 }

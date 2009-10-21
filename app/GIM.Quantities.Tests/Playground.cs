@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace GIM.Quantities {
     public class Playground {
         public class TestCustomFormatter : ICustomFormatter {
 
             public string Format(string format, object arg, IFormatProvider formatProvider) {
+                "Format: {0}".Use(format).Output();
                 return "{0}, {1}, {2}".Use(format, arg, formatProvider);
             }
 
@@ -17,7 +19,7 @@ namespace GIM.Quantities {
             }
         }
         public void Test() {
-            String.Format(new TestFormatProvider(), "> {0:n0}", 9876.541).Output();
+            String.Format(new TestFormatProvider(), "> {0:n0:n1}", 9876.541).Output();
         }
     }
 }

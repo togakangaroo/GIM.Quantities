@@ -57,6 +57,7 @@
     <Compile Include="Display\UnitDisplayRepositoryTests.cs" />
     <Compile Include="Display\When_formatting_density_with_ToString.cs" />
     <Compile Include="Display\When_formatting_mass_with_ToString.cs" />
+    <Compile Include="Display\When_formatting_volume_with_ToString.cs" />
     <Compile Include="Identity\When_creating_density.cs" />
     <Compile Include="Identity\When_creating_mass.cs" />
     <Compile Include="Identity\When_creating_volume.cs" />
