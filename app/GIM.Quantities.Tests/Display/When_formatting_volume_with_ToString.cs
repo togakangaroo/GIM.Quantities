@@ -1,9 +1,9 @@
 using System;
 using NUnit.Framework;
-using GIM.Quantities.Display;
 
 namespace GIM.Quantities.Tests.Display {
-    public class When_formatting_volume_with_ToString {
+    [Category("QuantityTests")]
+    public class When_formatting_volume_with_ToString : StringFormatQuantityTests {
         readonly Volume lt1 = 1.Liters();
         readonly Volume lt100 = 100.Liters();
         readonly Volume gal1000 = 1000.Gallons();

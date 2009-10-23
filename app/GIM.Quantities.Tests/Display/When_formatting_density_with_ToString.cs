@@ -1,11 +1,9 @@
 using System;
 using NUnit.Framework;
-using GIM.Quantities.Display;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GIM.Quantities.Tests.Display {
-    public class When_formatting_density_with_ToString {
+    [Category("QuantityTests")]
+    public class When_formatting_density_with_ToString : StringFormatQuantityTests {
         Density lbPerGal5 = new Density(10.Pounds(), 2.Gallons());
         Density lbPerGal1 = new Density(1.Pounds(), 1.Gallons());
         [Test]

@@ -3,7 +3,8 @@ using NUnit.Framework;
 using GIM.Quantities.Display;
 
 namespace GIM.Quantities.Tests.Display {
-    public class When_formatting_mass_with_ToString {
+    [Category("QuantityTests")]
+    public class When_formatting_mass_with_ToString : StringFormatQuantityTests {
         readonly Mass lb1 = new Mass(1, MassUnit.Pounds);
         readonly Mass lb100 = new Mass(100, MassUnit.Pounds);
         readonly Mass lb1000 = new Mass(1000, MassUnit.Pounds);

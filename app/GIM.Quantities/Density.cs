@@ -7,6 +7,7 @@ namespace GIM.Quantities {
         private readonly Mass _mass;
         private readonly Volume _volume;
         CompositeFormatProvider _compositeFormatProvider = new CompositeFormatProvider();
+
         public Density(Mass mass, Volume volume) : 
             base(mass.Amount/volume.Amount, new DensityUnit(mass.Unit, volume.Unit)) {
             _compositeFormatProvider = new CompositeFormatProvider(new IFormatProvider[] {
