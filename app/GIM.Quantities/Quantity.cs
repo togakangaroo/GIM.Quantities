@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 
 namespace GIM.Quantities {
+    [DebuggerDisplay("{ToString()}")]
     public class Quantity {
         private readonly double _amount;
         private readonly UnitOfMeasure _unit;
