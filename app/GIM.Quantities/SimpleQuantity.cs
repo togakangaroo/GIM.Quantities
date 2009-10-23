@@ -2,16 +2,6 @@ using System;
 using GIM.Quantities.Display;
 
 namespace GIM.Quantities {
-    public class Quantity {
-        private readonly double _amount;
-        private readonly UnitOfMeasure _unit;
-        public Quantity(double amount, UnitOfMeasure unit) {
-            _amount = amount;
-            _unit = unit;
-        }
-        public double Amount { get { return _amount; } }
-        public UnitOfMeasure Unit { get { return _unit; } }
-    }
     public abstract class SimpleQuantity<UOM_TYPE> : Quantity where UOM_TYPE : UnitOfMeasure {
         protected readonly CorrectPluralityFormatProvider _formatProvider;
         private readonly UOM_TYPE _unit;

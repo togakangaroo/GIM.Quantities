@@ -6,6 +6,7 @@ namespace GIM.Quantities.Tests.Display {
     public class When_formatting_density_with_ToString : StringFormatQuantityTests {
         Density lbPerGal5 = new Density(10.Pounds(), 2.Gallons());
         Density lbPerGal1 = new Density(1.Pounds(), 1.Gallons());
+        Density kgPerLtr2_1 = new Density(2.Kilograms(), 1.Liters());
         [Test]
         public void default_is_n2_single_number_short_units() {
             lbPerGal5.ToString().ShouldEqual("5.00 lbs/gal");
@@ -39,9 +40,14 @@ namespace GIM.Quantities.Tests.Display {
             lbPerGal5.ToString(pattern).ShouldEqual("5.00 lbs per gallon", "Pattern: {0}".Use(pattern));
         }
         [Test]
-        public void can_display_all_components_separately() {
+        public void can_display_all_components_separately_when_volume_quantity_is_plural() {
             string pattern = "{0}/{3} {1}/{2}";
-            lbPerGal5.ToString(pattern).ShouldEqual("10/2 lbs/gal", "Pattern: {0}".Use(pattern));
+            lbPerGal5.ToString(pattern).ShouldEqual("10/2 lbs/gals", "Pattern: {0}".Use(pattern));
+        }
+        [Test]
+        public void can_display_all_components_separately_when_volume_quantity_is_single() {
+            string pattern = "{0} {1} for every {3} {2}";
+            kgPerLtr2_1.ToString(pattern).ShouldEqual("2 kgs for every 1 ltr", "Pattern: {0}".Use(pattern));
         }
 
     }
