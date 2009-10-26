@@ -6,7 +6,7 @@ namespace GIM.Quantities.Tests.Display {
         public Display_PoundsPerGallon()
             : base(
                 () => DensityUnit.Of(MassUnit.Pounds).Per(VolumeUnit.Gallons),
-                new DisplayForms("lb/gal", "lbs/gal", "pound / gallon", "pounds / gallon")
+                new DisplayForms("lb/gal", "lbs/gal", "pound per gallon", "pounds per gallon")
                 ) { }
     }
 }

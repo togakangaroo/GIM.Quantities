@@ -5,7 +5,7 @@ namespace GIM.Quantities.Tests.Display {
         public Display_KilogramsPerLiter()
             : base(
                 () => DensityUnit.Of(MassUnit.Kilograms).Per(VolumeUnit.Liters),
-                new DisplayForms("kg/ltr", "kgs/ltr", "kilogram / liter", "kilograms / liter")
+                new DisplayForms("kg/ltr", "kgs/ltr", "kilogram per liter", "kilograms per liter")
                 ) { }
     }
 }

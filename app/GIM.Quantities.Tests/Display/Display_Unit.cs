@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace GIM.Quantities.Tests.Display {
     public abstract class Display_Unit {
+        private readonly static IDisplayUnits _long = new LongUnitsDisplay();
+        private readonly static IDisplayUnits _short = new ShortUnitsDisplay();
 
         private Func<UnitOfMeasure> _create;
         private DisplayForms _displayForms;
@@ -14,35 +16,35 @@ namespace GIM.Quantities.Tests.Display {
         }
         [Test]
         public void in_short_plural_form() {
-            _create().ToString(UnitDisplay.Short, UnitPlurality.Plural).ShouldEqual(_displayForms.ShortPlural);
+            _create().ToString(_short, UnitPlurality.Plural).ShouldEqual(_displayForms.ShortPlural);
         }
         [Test]
         public void in_short_single_form() {
-            _create().ToString(UnitDisplay.Short, UnitPlurality.Single).ShouldEqual(_displayForms.ShortSingle);
+            _create().ToString(_short, UnitPlurality.Single).ShouldEqual(_displayForms.ShortSingle);
         }
         [Test]
         public void in_long_plural_form() {
-            _create().ToString(UnitDisplay.Long, UnitPlurality.Plural).ShouldEqual(_displayForms.LongPlural);
+            _create().ToString(_long, UnitPlurality.Plural).ShouldEqual(_displayForms.LongPlural);
         }
         [Test]
         public void in_long_single_form() {
-            _create().ToString(UnitDisplay.Long, UnitPlurality.Single).ShouldEqual(_displayForms.LongSingle);
+            _create().ToString(_long, UnitPlurality.Single).ShouldEqual(_displayForms.LongSingle);
         }
         [Test]
         public void short_format_for_singulars() {
-            TestSingularTitle(i => UnitDisplay.Short.GetUnitDisplayFor(i, _create()), _displayForms.ShortSingle);
+            TestSingularTitle(i => _short.GetUnitDisplayFor(i, _create()), _displayForms.ShortSingle);
         }
         [Test]
         public void short_format_for_plurals() {
-            TestPluralTitle(i => UnitDisplay.Short.GetUnitDisplayFor(i, _create()), _displayForms.ShortPlural);
+            TestPluralTitle(i => _short.GetUnitDisplayFor(i, _create()), _displayForms.ShortPlural);
         }
         [Test]
         public void long_format_for_singulars() {
-            TestSingularTitle(i => UnitDisplay.Long.GetUnitDisplayFor(i, _create()), _displayForms.LongSingle);
+            TestSingularTitle(i => _long.GetUnitDisplayFor(i, _create()), _displayForms.LongSingle);
         }
         [Test]
         public void long_format_for_plurals() {
-            TestPluralTitle(i => UnitDisplay.Long.GetUnitDisplayFor(i, _create()), _displayForms.LongPlural);
+            TestPluralTitle(i => _long.GetUnitDisplayFor(i, _create()), _displayForms.LongPlural);
         }
         private void TestSingularTitle(Func<double, string> createTitle, string desiredTitle) {
             new List<double> { -1, 1 }.ForEach(i => createTitle(i).ShouldEqual(desiredTitle, "For input {0}".Use(i)));

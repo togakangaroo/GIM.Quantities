@@ -1,7 +1,7 @@
 using System;
 
 namespace GIM.Quantities.Display {
-    public class CorrectPluralityFormatProvider : IFormatProvider {
+    public class CorrectPluralityFormatProvider : IFormatProvider, ICustomFormatter {
         private UnitPlurality _plurality;
         public CorrectPluralityFormatProvider(Quantity quantity, IDeterminePlurality pluralityChecker) {
             _plurality = pluralityChecker.GetPlurality(quantity.Amount);
@@ -11,7 +11,12 @@ namespace GIM.Quantities.Display {
         public object GetFormat(Type formatType) {
             if (!typeof(ICustomFormatter).IsAssignableFrom(formatType))
                 return null;
-            return new UnitFormatter(_plurality);
+            return this;
+        }
+        public string Format(string format, object arg, IFormatProvider formatProvider) {
+            var uom = arg as UnitOfMeasure;
+            if (uom.IsNull()) return null;
+            return ProvideUnitDisplaysFactory.Instance.Get(format, uom).GetUnitDisplayFor(_plurality.Example, uom);
         }
     }
 }
