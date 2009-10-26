@@ -52,6 +52,8 @@
     <Compile Include="Display\IPluralizationConvention.cs" />
     <Compile Include="Display\IProvideUnitDisplays.cs" />
     <Compile Include="Display\LongUnitsDisplay.cs" />
+    <Compile Include="Display\NullPluralizationConvention.cs" />
+    <Compile Include="Display\PluralUnitsDisplay.cs" />
     <Compile Include="Display\Registration\IUnitDisplayRegistration.cs" />
     <Compile Include="Display\Registration\ReadyForDefaultsUnitDisplayRegistration.cs" />
     <Compile Include="Display\Registration\UnitDisplayRegistrationTagsAdder.cs" />

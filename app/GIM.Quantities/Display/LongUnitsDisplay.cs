@@ -31,7 +31,7 @@ namespace GIM.Quantities.Display {
                 {u => u==VolumeUnit.Liters, u =>"liter"},
                 {u => u is DensityUnit, u =>{
                     var x = u as DensityUnit;
-                    return "{0} per {1}".Use(x.MassUnit,
+                    return "{0} per {1}".Use(GetUnitDisplayFor(UnitPlurality.Single.Example, x.MassUnit),
                         GetUnitDisplayFor(UnitPlurality.Single.Example, x.VolumeUnit));
                 }},
             };

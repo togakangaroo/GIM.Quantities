@@ -15,8 +15,12 @@ namespace GIM.Quantities.Tests.Display.Extensibility {
         [Test] public void can_use_it_with_the_exact_case() {
             ProvideUnitDisplaysFactory.Instance
                        .Add(x => x.Instance(new TestDisplay1()).WithTags("test"));
-            Assert.That(10.Pounds().ToString("{0} {1:test1}"), Is.EqualTo("10 test1"));
+            Assert.That(10.Pounds().ToString("{0} {1:test1}"), Is.EqualTo("10 test1s"));
         }
+        //[Test]
+        //public void can_add_format_with_custom_plurality_helper() {
+            
+        //}
          [TearDown]
          public void TearDown() {
             ProvideUnitDisplaysFactory.ResetToDefault();

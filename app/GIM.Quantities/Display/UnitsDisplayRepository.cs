@@ -42,5 +42,20 @@ namespace GIM.Quantities.Display {
             else
                 return GetByTag(tag);
         }
+
+        readonly IPluralizationConvention _simplePluralizer = new SimpleEnglishPluralizationConvention();
+        readonly IPluralizationConvention _nullPluralizer = new NullPluralizationConvention();
+        public IDisplayUnits Get(string tag, UnitOfMeasure targetUnit, UnitPlurality plurality) {
+            IPluralizationConvention pluralization =
+                plurality == UnitPlurality.Single ? 
+                _nullPluralizer :_simplePluralizer;
+            if (String.IsNullOrEmpty(tag))
+                if (!_defaults.Any(kv => kv.Key.IsAssignableFrom(targetUnit.GetType())))
+                    throw new InvalidOperationException("No tag was provided and no default is available for type {0}".Use(targetUnit));
+                else
+                    return new PluralUnitsDisplay(_defaults.First(kv => kv.Key.IsAssignableFrom(targetUnit.GetType())).Value, pluralization);
+            else
+                return new PluralUnitsDisplay(GetByTag(tag), pluralization);
+        }
     }
 }
