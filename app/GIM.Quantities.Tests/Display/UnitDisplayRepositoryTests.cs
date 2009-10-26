@@ -14,9 +14,11 @@ namespace GIM.Quantities.Tests.Display {
                        .Add(x=>x.Instance(new ShortUnitsDisplay()).WithTags("short").DefaultFor<UnitOfMeasure>());
         }
         class TestDisplay1 : IDisplayUnits {
-            public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { return ""; } }
+            public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { return ""; } 
+            public string GetUnitDisplayFor(UnitOfMeasure unit) { return ""; } } 
         class TestDisplay2 : IDisplayUnits {
-            public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { return ""; } }
+            public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { return ""; }
+            public string GetUnitDisplayFor(UnitOfMeasure unit) { return ""; } } 
         [Test] public void Can_resolve_correct_formatter_by_tag() {
             _repository.Get("short", MassUnit.Kilograms).ShouldBeType<ShortUnitsDisplay>(); }
         [Test] public void Resolving_by_tag_is_case_insensitve() {
