@@ -2,6 +2,7 @@
 using NUnit.Framework;
 
 namespace GIM.Quantities.Tests.Identity {
+    [Category("Acceptance Spec")]
     public class When_creating_mass {
         [Test] public void pounds_gets_created_properly() {
             var q = new Mass(1500, MassUnit.Pounds);

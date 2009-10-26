@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 
 namespace GIM.Quantities.Tests.Identity {
+    [Category("Acceptance Spec")]
     public class When_creating_volume {
         [Test]
         public void gallons_instantiated_properly() {

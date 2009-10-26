@@ -54,6 +54,7 @@
     <Compile Include="Display\Display_Pounds.cs" />
     <Compile Include="Display\Display_PoundsPerGallon.cs" />
     <Compile Include="Display\Display_Unit.cs" />
+    <Compile Include="Display\Extensibility\When_adding_new_display_format.cs" />
     <Compile Include="Display\StringFormatQuantityTests.cs" />
     <Compile Include="Display\Support\When_formatting_density_in_a_compound_format.cs" />
     <Compile Include="Display\Support\When_formatting_density_in_a_simple_format.cs" />

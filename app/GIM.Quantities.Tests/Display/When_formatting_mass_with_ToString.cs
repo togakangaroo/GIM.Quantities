@@ -3,7 +3,7 @@ using NUnit.Framework;
 using GIM.Quantities.Display;
 
 namespace GIM.Quantities.Tests.Display {
-    [Category("QuantityTests")]
+    [Category("Acceptance Spec")]
     public class When_formatting_mass_with_ToString : StringFormatQuantityTests {
         readonly Mass lb1 = new Mass(1, MassUnit.Pounds);
         readonly Mass lb100 = new Mass(100, MassUnit.Pounds);
@@ -42,11 +42,11 @@ namespace GIM.Quantities.Tests.Display {
             lb1.ToString("{1}").ShouldEqual("lb");
         }
         [Test] public void format_with_extra_placeholders_will_throw_error() {
-            AssertThat.Throws<FormatException>(() =>
+            Assert.Throws<FormatException>(() =>
                 lb1.ToString("{0} {1} {2}"));
         }
         [Test] public void format_with_unknown_unit_display_format_throw_error() {
-            AssertThat.Throws<UnknownUnitDisplayFormatException>(()=>
+            Assert.Throws<UnknownUnitDisplayFormatException>(()=>
                 lb1.ToString("{0} {1:test-format}"));
         }
     }

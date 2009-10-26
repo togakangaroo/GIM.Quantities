@@ -2,7 +2,7 @@
     using NUnit.Framework;
 
     namespace GIM.Quantities.Tests.Display {
-        [Category("QuantityTests")]
+        [Category("Acceptance Spec")]
         public class When_formatting_density_with_ToString : StringFormatQuantityTests {
             Density lbPerGal5 = new Density(10.Pounds(), 2.Gallons());
             Density lbPerGal1 = new Density(1.Pounds(), 1.Gallons());
