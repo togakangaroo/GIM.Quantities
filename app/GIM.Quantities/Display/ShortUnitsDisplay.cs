@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace GIM.Quantities.Display {
-    public class PredicateFunctionHash {
-        
-    }
     public class ShortUnitsDisplay : IDisplayUnits {
         IDictionary<Func<double, UnitOfMeasure, bool>, Func<double, UnitOfMeasure, string>> _typeNames;
         static PluralityChecker _plurality = new PluralityChecker();

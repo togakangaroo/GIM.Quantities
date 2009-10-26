@@ -55,6 +55,9 @@
     <Compile Include="Display\Display_PoundsPerGallon.cs" />
     <Compile Include="Display\Display_Unit.cs" />
     <Compile Include="Display\StringFormatQuantityTests.cs" />
+    <Compile Include="Display\Support\When_formatting_density_in_a_compound_format.cs" />
+    <Compile Include="Display\Support\When_formatting_density_in_a_simple_format.cs" />
+    <Compile Include="Display\Support\When_getting_a_density_formatter_for_format_string.cs" />
     <Compile Include="Display\UnitDisplayRepositoryTests.cs" />
     <Compile Include="Display\When_formatting_density_with_ToString.cs" />
     <Compile Include="Display\When_formatting_mass_with_ToString.cs" />

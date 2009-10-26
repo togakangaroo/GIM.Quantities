@@ -19,7 +19,8 @@ namespace GIM.Quantities {
             }
         }
         public void Test() {
-            String.Format(new TestFormatProvider(), "> {0:n0:n1}", 9876.541).Output();
+            (5.2d).ToString("n4").Output();
+            //String.Format(new TestFormatProvider(), "> {0:n0:n1}", 9876.541).Output();
         }
     }
 }
