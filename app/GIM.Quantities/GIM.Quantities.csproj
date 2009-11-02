@@ -47,6 +47,7 @@
     <Compile Include="DensityUnit.cs" />
     <Compile Include="Display\CorrectPluralityFormatProvider.cs" />
     <Compile Include="Display\DensityFormatterFactory.cs" />
+    <Compile Include="Display\DisplayHelperExtensions.cs" />
     <Compile Include="Display\FuncHash.cs" />
     <Compile Include="Display\IDeterminePlurality.cs" />
     <Compile Include="Display\IDisplayUnits.cs" />

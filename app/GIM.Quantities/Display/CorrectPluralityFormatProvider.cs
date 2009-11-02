@@ -16,7 +16,8 @@ namespace GIM.Quantities.Display {
         public string Format(string format, object arg, IFormatProvider formatProvider) {
             var uom = arg as UnitOfMeasure;
             if (uom.IsNull()) return null;
-            return ProvideUnitDisplaysFactory.Instance.Get(format, uom, _plurality).GetUnitDisplayFor(new UnitAtPlularity(uom, _plurality));
+            return ProvideUnitDisplaysFactory.Instance.Get(format, uom, _plurality)
+                .GetUnitDisplayFor(new UnitAtPlularity(uom, _plurality));
         }
     }
 }

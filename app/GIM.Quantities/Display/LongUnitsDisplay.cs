@@ -8,25 +8,20 @@ namespace GIM.Quantities.Display {
         public LongUnitsDisplay() {
             _unitConverter = new FuncHash<UnitAtPlularity, UnitAtPlularity, string>(
                 new Dictionary<Func<UnitAtPlularity, bool>, Func<UnitAtPlularity, string>>() {
-                {u => u.Unit==MassUnit.Pounds, u =>"pound"},
-                {u => u.Unit==MassUnit.Kilograms, u =>"kilogram"},
-                {u => u.Unit==VolumeUnit.Gallons, u =>"gallon"},
-                {u => u.Unit==VolumeUnit.Liters, u =>"liter"},
+                {u => u.Unit==MassUnit.Pounds, u =>u.ConvertPlural("pound")},
+                {u => u.Unit==MassUnit.Kilograms, u =>u.ConvertPlural("kilogram")},
+                {u => u.Unit==VolumeUnit.Gallons, u =>u.ConvertPlural("gallon")},
+                {u => u.Unit==VolumeUnit.Liters, u =>u.ConvertPlural("liter")},
                 {u => u.Unit is DensityUnit, u =>{
                     var x = u.Unit as DensityUnit;
-                    return "{0}/{1}".Use(
+                    return "{0} per {1}".Use(
                         x.MassUnit.ToString(this, u.Plurality), x.VolumeUnit.ToString(this, UnitPlurality.Single));
                 }},
             });
         }
 
-        public string GetUnitDisplayFor(double amount, UnitOfMeasure unit) {
-            throw new NotImplementedException();
-        }
-
         public string GetUnitDisplayFor(UnitAtPlularity unitAtPlularity) {
-            return  unitAtPlularity.Plurality.Pluralizer.Convert(
-                _unitConverter.ExecuteFirstOrDefault(unitAtPlularity, unitAtPlularity));
+            return  _unitConverter.ExecuteFirstOrDefault(unitAtPlularity, unitAtPlularity);
         }
     }
 }

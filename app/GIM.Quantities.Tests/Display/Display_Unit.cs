@@ -7,12 +7,15 @@ namespace GIM.Quantities.Tests.Display {
     public abstract class Display_Unit {
         private readonly static IDisplayUnits _long = new LongUnitsDisplay();
         private readonly static IDisplayUnits _short = new ShortUnitsDisplay();
-
+        private readonly static IDeterminePlurality _checker = new PluralityChecker();
         private Func<UnitOfMeasure> _create;
         private DisplayForms _displayForms;
         public Display_Unit(Func<UnitOfMeasure> create, DisplayForms displayForms) {
             _displayForms = displayForms;
             _create = create;
+        }
+        private UnitAtPlularity GetUnitAtPlularity(double i) {
+            return new UnitAtPlularity(_create(), _checker.GetPlurality(i));
         }
         [Test]
         public void in_short_plural_form() {
@@ -32,19 +35,19 @@ namespace GIM.Quantities.Tests.Display {
         }
         [Test]
         public void short_format_for_singulars() {
-            TestSingularTitle(i => _short.GetUnitDisplayFor(i, _create()), _displayForms.ShortSingle);
+            TestSingularTitle(i => _short.GetUnitDisplayFor(GetUnitAtPlularity(i)), _displayForms.ShortSingle);
         }
         [Test]
         public void short_format_for_plurals() {
-            TestPluralTitle(i => _short.GetUnitDisplayFor(i, _create()), _displayForms.ShortPlural);
+            TestPluralTitle(i => _short.GetUnitDisplayFor(GetUnitAtPlularity(i)), _displayForms.ShortPlural);
         }
         [Test]
         public void long_format_for_singulars() {
-            TestSingularTitle(i => _long.GetUnitDisplayFor(i, _create()), _displayForms.LongSingle);
+            TestSingularTitle(i => _long.GetUnitDisplayFor(GetUnitAtPlularity(i)), _displayForms.LongSingle);
         }
         [Test]
         public void long_format_for_plurals() {
-            TestPluralTitle(i => _long.GetUnitDisplayFor(i, _create()), _displayForms.LongPlural);
+            TestPluralTitle(i => _long.GetUnitDisplayFor(GetUnitAtPlularity(i)), _displayForms.LongPlural);
         }
         private void TestSingularTitle(Func<double, string> createTitle, string desiredTitle) {
             new List<double> { -1, 1 }.ForEach(i => createTitle(i).ShouldEqual(desiredTitle, "For input {0}".Use(i)));
