@@ -10,17 +10,19 @@ namespace GIM.Quantities.Tests.Display.Extensibility {
  
         class TestDisplay1 : IDisplayUnits {
             public string GetUnitDisplayFor(double amount, UnitOfMeasure _unit) { return "test1"; }
-            public string GetUnitDisplayFor(UnitOfMeasure _unit) { return "test1"; }
+            public string GetUnitDisplayFor(UnitAtPlularity unitAtPlularity) {return "test1"; }
         }
-        [Test] public void can_use_it_with_the_exact_case() {
+        [SetUp]
+        public void Setup() {
             ProvideUnitDisplaysFactory.Instance
                        .Add(x => x.Instance(new TestDisplay1()).WithTags("test"));
-            Assert.That(10.Pounds().ToString("{0} {1:test1}"), Is.EqualTo("10 test1s"));
         }
-        //[Test]
-        //public void can_add_format_with_custom_plurality_helper() {
-            
-        //}
+        [Test] public void can_use_it_in_a_pluralized_form() {
+            Assert.That(10.Pounds().ToString("{0} {1:test1}"), Is.EqualTo("10 test1"));
+        }
+        [Test] public void can_use_it_in_a_singular_form() {
+            Assert.That(1.Liters().ToString("{0} {1:test1}"), Is.EqualTo("1 test1"));
+        }
          [TearDown]
          public void TearDown() {
             ProvideUnitDisplaysFactory.ResetToDefault();
