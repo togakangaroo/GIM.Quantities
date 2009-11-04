@@ -2,6 +2,8 @@
 using NUnit.Framework;
 
 namespace GIM.Quantities.Tests.Arithmetic {
+    [Category("Acceptance Spec")]
+    [Ignore("Not yet ready")]
     public class Addition {
         Quantity x;
         [Test] public void Can_add_same_masses_correctly() {
