@@ -5,6 +5,7 @@ namespace GIM.Quantities {
     [DebuggerDisplay("{ToString()}")]
     public abstract class Quantity {
         private readonly double _amount;
+        private static readonly NotImplementedException _imiplicitConversionErr = new NotImplementedException("Implcit conversions not yet supported");
         private readonly UnitOfMeasure _unit;
         public Quantity(double amount, UnitOfMeasure unit) {
             _amount = amount;
@@ -30,6 +31,9 @@ namespace GIM.Quantities {
             var qnt = obj as Quantity;
             if (qnt.IsNull())
                 return false;
+            if (qnt.Unit != this.Unit) {
+                throw _imiplicitConversionErr;
+            }
             return Amount == qnt.Amount && Unit == qnt.Unit;
         }
         public Quantity Add(Quantity rightHandQuantity) {
@@ -40,13 +44,13 @@ namespace GIM.Quantities {
             return null;
         }
         private Quantity Convert(Quantity q, UnitOfMeasure targetUnit) {
-            if(q.Unit != targetUnit)
-                throw new NotImplementedException("Implicit conversions not yet supported");
+            if (q.Unit != targetUnit)
+                throw _imiplicitConversionErr;
             return q;
         }
         public static Quantity operator +(Quantity left, Quantity right) {
             if (left.Unit != right.Unit)
-                throw new NotImplementedException("Cannot do operations on quantities of different units");
+                throw _imiplicitConversionErr;
             throw new NotImplementedException();
         }
 
