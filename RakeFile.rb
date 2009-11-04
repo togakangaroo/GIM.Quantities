@@ -42,3 +42,17 @@ task :test_build => :build_core do
   tests = "#{TEST_PROJECT_PATH}\\bin\\Debug\\#{TEST_PROJECT_NAME}.dll"
   sh "#{TEST_RUNNER} #{tests}"
 end
+
+desc 'Increase minor version'
+task :minor_version do
+	path =  "#{CORE_PROJECT_PATH}\\Properties\\AssemblyInfo.cs"
+	assembly_info = File.readlines(path)
+	out = File.open(path, "w") { |out|
+		is_comment = /^\s*\/\//
+  	minor_version_pattern = /\d+(?=\.\*)/
+		assembly_info.each do |line|
+			out.write line and next if !(line =~ /AssemblyVersion/) || line =~ is_comment
+			out.write line.gsub(minor_version_pattern) { |version| version.to_i + 1 }
+		end
+	}
+end
