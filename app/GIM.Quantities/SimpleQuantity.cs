@@ -16,7 +16,7 @@ namespace GIM.Quantities {
         public override string ToString() {
             return ToString("{0:n0} {1}");
         }
-        public virtual string ToString(string format) {            
+        public override string ToString(string format) {            
             return String.Format(_formatProvider, format, Amount, Unit);
         }
     }
