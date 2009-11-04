@@ -12,6 +12,7 @@ namespace GIM.Quantities.Display {
                 {u => u.Unit==MassUnit.Kilograms, u =>u.ConvertPlural("kilogram")},
                 {u => u.Unit==VolumeUnit.Gallons, u =>u.ConvertPlural("gallon")},
                 {u => u.Unit==VolumeUnit.Liters, u =>u.ConvertPlural("liter")},
+                {u => u.Unit==VolumeUnit.Barrels, u =>u.ConvertPlural("barrel")},
                 {u => u.Unit is DensityUnit, u =>{
                     var x = u.Unit as DensityUnit;
                     return "{0} per {1}".Use(

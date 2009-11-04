@@ -68,6 +68,7 @@
     <Compile Include="SimpleQuantity.cs" />
     <Compile Include="SpecificUnits\MassUnitKilograms.cs" />
     <Compile Include="Display\PluralityChecker.cs" />
+    <Compile Include="SpecificUnits\VolumeUnitBarrels.cs" />
     <Compile Include="SpecificUnits\VolumeUnitGallons.cs" />
     <Compile Include="SpecificUnits\VolumeUnitLiters.cs" />
     <Compile Include="StringExtensions.cs" />

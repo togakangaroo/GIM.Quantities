@@ -31,5 +31,6 @@ httpd.parse.errors
  
 # If you have a deploy folder
 # build
-# build/*
+build/*
  
+TestResult.xml

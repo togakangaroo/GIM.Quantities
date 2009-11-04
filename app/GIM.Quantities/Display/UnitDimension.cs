@@ -8,6 +8,7 @@ namespace GIM.Quantities.Display {
         public static UnitPlurality Plural { get { return _plural; } }
         private readonly static UnitPlurality _single = new UnitPluralitySingle();
         public static UnitPlurality Single { get { return _single; } }
+
     }
     public class UnitPluralityPlural : UnitPlurality {
         [Obsolete("Use UnitPlurality.Plural")]

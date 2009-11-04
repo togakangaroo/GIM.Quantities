@@ -47,6 +47,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arithmetic\When_adding_masses.cs" />
+    <Compile Include="Display\Display_Barrels.cs" />
     <Compile Include="Display\Display_Gallons.cs" />
     <Compile Include="Display\Display_Kilograms.cs" />
     <Compile Include="Display\Display_KilogramsPerLiter.cs" />
@@ -77,7 +79,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Arithmetic\" />
     <Folder Include="Conversion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
