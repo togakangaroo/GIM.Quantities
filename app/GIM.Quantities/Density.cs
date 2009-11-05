@@ -22,6 +22,9 @@ namespace GIM.Quantities {
                 return _volume;
             }
         }
+        protected override Quantity Create(double amount, UnitOfMeasure unit) {
+            return SimpleCreate(unit, u => new Density(new Mass(amount, u.MassUnit), new Volume(1, u.VolumeUnit)));
+        }
 
         public override string ToString() {
             return ToString("{0:n2} {1}");
@@ -29,6 +32,17 @@ namespace GIM.Quantities {
         public override string ToString(string format) {
             var formatter = _factory.GetForPattern(format);
             return formatter.Format(format, this);
+        }
+        public Density Add(Density rightHandQuantity) {
+            if (rightHandQuantity.IsNull())
+                throw new ArgumentNullException("Right hand quantity cannot be null");
+            var q = (Density)Convert(rightHandQuantity, this.Unit);
+            return new Density(new Mass(Amount + q.Amount, Mass.Unit), new Volume(1, Volume.Unit));
+        }
+        public static Density operator +(Density left, Density right) {
+            if (!left.IsNull())
+                return left.Add(right);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
         }
 
     }

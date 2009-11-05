@@ -16,6 +16,12 @@ namespace GIM.Quantities {
         public override string ToString() {
             return ToString("{0:n0} {1}");
         }
+        protected SimpleQuantity<UOM_TYPE> SimpleCreate(UnitOfMeasure unit, Func<UOM_TYPE, SimpleQuantity<UOM_TYPE>> creation) {
+            var mu = unit as UOM_TYPE;
+            if (mu.IsNull())
+                throw new InvalidOperationException("Cannot create {0} form unit {1}".Use(this.GetType(), unit.GetType()));
+            return creation(mu);
+        }
         public override string ToString(string format) {            
             return String.Format(_formatProvider, format, Amount, Unit);
         }

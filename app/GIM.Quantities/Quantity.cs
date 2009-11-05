@@ -36,23 +36,11 @@ namespace GIM.Quantities {
             }
             return Amount == qnt.Amount && Unit == qnt.Unit;
         }
-        public Quantity Add(Quantity rightHandQuantity) {
-            var q = Convert(rightHandQuantity, this.Unit);
-            return Create(this.Amount + q.Amount, this.Unit);
-        }
-        private static Quantity Create(double amount, UnitOfMeasure unit) {
-            return null;
-        }
-        private Quantity Convert(Quantity q, UnitOfMeasure targetUnit) {
+        protected abstract Quantity Create(double amount, UnitOfMeasure unit);
+        protected Quantity Convert(Quantity q, UnitOfMeasure targetUnit) {
             if (q.Unit != targetUnit)
                 throw _imiplicitConversionErr;
             return q;
         }
-        public static Quantity operator +(Quantity left, Quantity right) {
-            if (left.Unit != right.Unit)
-                throw _imiplicitConversionErr;
-            throw new NotImplementedException();
-        }
-
     }
 }
