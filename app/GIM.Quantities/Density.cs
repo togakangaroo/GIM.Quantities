@@ -44,6 +44,30 @@ namespace GIM.Quantities {
                 return left.Add(right);
             throw new ArgumentNullException("Left hand quantity cannot be null");
         }
+        public static Density operator -(Density left, Density right) {
+            if (!left.IsNull())
+                return left.Add(-1 * right);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public static Density operator *(Density quantity, double scaleBy) {
+            if (!quantity.IsNull())
+                return quantity.ScaleBy(scaleBy);
+            throw new ArgumentNullException("Cannot scale null quantity");
+        }
+        public static Density operator *(double scaleBy, Density quantity) {
+            if (!quantity.IsNull())
+                return quantity.ScaleBy(scaleBy);
+            throw new ArgumentNullException("Cannot scale null quantity");
+        }
+        public static Density operator /(Density quantity, double scaleBy) {
+            if (!quantity.IsNull())
+                return quantity.ScaleBy(1 / scaleBy);
+            throw new ArgumentNullException("Cannot scale null quantity");
+        }
+
+        public Density ScaleBy(double scaleBy) {
+            return new Density(new Mass(Amount * scaleBy, Unit.MassUnit), new Volume(1, Unit.VolumeUnit));
+        }
 
     }
 }

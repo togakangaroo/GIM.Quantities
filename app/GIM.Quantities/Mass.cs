@@ -18,5 +18,29 @@ namespace GIM.Quantities {
                 return left.Add(right);
             throw new ArgumentNullException("Left hand quantity cannot be null");
         }
+        public static Mass operator -(Mass left, Mass right) {
+            if (!left.IsNull())
+                return left.Add(-1*right);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public static Mass operator *(Mass mass, double scaleBy) {
+            if (!mass.IsNull())
+                return mass.ScaleBy(scaleBy);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public static Mass operator *(double scaleBy, Mass mass) {
+            if (!mass.IsNull())
+                return mass.ScaleBy(scaleBy);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public static Mass operator /(Mass mass, double scaleBy) {
+            if (!mass.IsNull())
+                return mass.ScaleBy(1/scaleBy);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+
+        public Mass ScaleBy(double scaleBy) {
+            return new Mass(Amount * scaleBy, Unit);
+        }
     }
 }

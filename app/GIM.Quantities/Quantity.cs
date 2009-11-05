@@ -34,7 +34,7 @@ namespace GIM.Quantities {
             if (qnt.Unit != this.Unit) {
                 throw _imiplicitConversionErr;
             }
-            return Amount == qnt.Amount && Unit == qnt.Unit;
+            return Math.Round(Amount, 14) == Math.Round(qnt.Amount, 14) && Unit == qnt.Unit;
         }
         protected abstract Quantity Create(double amount, UnitOfMeasure unit);
         protected Quantity Convert(Quantity q, UnitOfMeasure targetUnit) {

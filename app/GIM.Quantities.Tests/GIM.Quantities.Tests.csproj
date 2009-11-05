@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Arithmetic\Addition.cs" />
     <Compile Include="Arithmetic\Equality.cs" />
+    <Compile Include="Arithmetic\Multiply.cs" />
     <Compile Include="Display\Display_Barrels.cs" />
     <Compile Include="Display\Display_Gallons.cs" />
     <Compile Include="Display\Display_Kilograms.cs" />
