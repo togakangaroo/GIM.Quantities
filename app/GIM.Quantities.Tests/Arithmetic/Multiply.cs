@@ -14,7 +14,7 @@ namespace GIM.Quantities.Tests.Arithmetic {
             (10.Pounds().Per(1.Gallons()) * .5d).ShouldEqual(new Density(5.Pounds(), 1.Gallons()));
         }
         [Test] public void Can_divide_mass_correctly() {
-            (10.Pounds() / 3).ShouldEqual((10d/3).Pounds());
+            ((10d).Pounds() / 3d).ShouldEqual((10d / 3d).Pounds());
         }
         [Test] public void Can_divide_volume_correctly() {
             (20.Liters()/.5).ShouldEqual(40.Liters());
