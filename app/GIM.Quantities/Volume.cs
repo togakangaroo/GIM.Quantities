@@ -42,5 +42,17 @@ namespace GIM.Quantities {
         public Volume ScaleBy(double scaleBy) {
             return new Volume(Amount * scaleBy, Unit);
         }
+        public static double operator /(Volume volume1, Volume volume2) {
+            if (!volume1.IsNull())
+                return volume1.DivideBy(volume2);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public double DivideBy(Volume volume2) {
+            if (volume2.IsNull())
+                throw new ArgumentNullException();
+            if (!this.Unit.Equals(volume2.Unit))
+                throw new NotImplementedException("Units do not match");
+            return this.Amount / volume2.Amount;
+        }
     }
 }

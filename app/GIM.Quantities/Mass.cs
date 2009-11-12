@@ -38,9 +38,20 @@ namespace GIM.Quantities {
                 return mass.ScaleBy(1/scaleBy);
             throw new ArgumentNullException("Left hand quantity cannot be null");
         }
-
         public Mass ScaleBy(double scaleBy) {
             return new Mass(Amount * scaleBy, Unit);
+        }
+        public static double operator /(Mass mass1, Mass mass2) {
+            if (!mass1.IsNull())
+                return mass1.DivideBy(mass2);
+            throw new ArgumentNullException("Left hand quantity cannot be null");
+        }
+        public double DivideBy(Mass mass2) {
+            if (mass2.IsNull())
+                throw new ArgumentNullException();
+            if (!this.Unit.Equals(mass2.Unit))
+                throw new NotImplementedException("Units do not match");
+            return this.Amount / mass2.Amount;
         }
     }
 }
