@@ -22,5 +22,15 @@ namespace GIM.Quantities.Tests.Arithmetic {
         [Test] public void Can_divide_density_correctly() {
             (10.Pounds().Per(1.Gallons()) / 2d).ShouldEqual(new Density(5.Pounds(), 1.Gallons()));
         }
+        [Test] public void Cant_divide_volume_by_zero() {
+            Assert.Throws<DivideByZeroException>(delegate { var _ = 20.Liters() / 0; });
+        }
+        [Test]
+        public void Cant_divide_mass_by_zero() {
+            Assert.Throws<DivideByZeroException>(delegate { var _ = 20.Kilograms() / 0; });
+        }
+        [Test] public void Cant_divide_density_by_zero() {
+            Assert.Throws<DivideByZeroException>(delegate{var _=10.Pounds().Per(1.Gallons()) / 0;});
+        }
     }
 }
