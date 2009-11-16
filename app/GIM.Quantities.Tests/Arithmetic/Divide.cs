@@ -13,12 +13,8 @@ namespace GIM.Quantities.Tests.Arithmetic {
             (30.Pounds() / 10.Pounds()).ShouldEqual(3);
         }
         [Test]
-        public void Cant_divide_mass_by_zero() {
-            Assert.Throws<DivideByZeroException>(delegate{ var _=30.Pounds() / 0.Pounds();});
-        }
-        [Test]
-        public void Cant_divide_volume_by_zero() {
-            Assert.Throws<DivideByZeroException>(delegate { var _ = 30.Liters() / 0.Liters(); });
+        public void Numerator_can_be_zero() {
+            (0.Pounds() / 10.Pounds()).ShouldEqual(0);
         }
     }
 }
