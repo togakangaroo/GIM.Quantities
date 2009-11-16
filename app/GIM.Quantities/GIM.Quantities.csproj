@@ -41,8 +41,11 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion\MassConversions.cs" />
     <Compile Include="Density.cs" />
     <Compile Include="DensityUnit.cs" />
     <Compile Include="Display\CorrectPluralityFormatProvider.cs" />

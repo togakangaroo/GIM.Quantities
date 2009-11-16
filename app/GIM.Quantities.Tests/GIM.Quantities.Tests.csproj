@@ -51,6 +51,7 @@
     <Compile Include="Arithmetic\Divide.cs" />
     <Compile Include="Arithmetic\Equality.cs" />
     <Compile Include="Arithmetic\Multiply.cs" />
+    <Compile Include="Conversion\Mass_conversion.cs" />
     <Compile Include="Display\Display_Barrels.cs" />
     <Compile Include="Display\Display_Gallons.cs" />
     <Compile Include="Display\Display_Kilograms.cs" />
@@ -80,9 +81,6 @@
       <Project>{AD611001-95CB-463E-B77A-C316CF26BB86}</Project>
       <Name>GIM.Quantities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Conversion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

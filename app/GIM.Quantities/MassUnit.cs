@@ -26,4 +26,9 @@ namespace GIM.Quantities {
             return new Mass(amount, MassUnit.Kilograms);
         }
     }
+    public static partial class QuantityConversionExtensions {
+        public static Mass In(this Mass mass, Func<double, Mass> massUnitProvider) {
+            return mass.In(massUnitProvider(1).Unit);
+        }
+    }
 }

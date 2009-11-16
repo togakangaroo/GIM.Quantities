@@ -1,4 +1,5 @@
 using System;
+using GIM.Quantities.Conversion;
 
 namespace GIM.Quantities {
     public class Mass : SimpleQuantity<MassUnit> {
@@ -52,6 +53,9 @@ namespace GIM.Quantities {
             if (!this.Unit.Equals(mass2.Unit))
                 throw new NotImplementedException("Units do not match");
             return this.Amount / mass2.Amount;
+        }
+        public Mass In(MassUnit unitTo) {
+            return MassConversion.Instance.Convert(this, unitTo);
         }
     }
 }
