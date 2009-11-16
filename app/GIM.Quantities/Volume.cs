@@ -1,4 +1,5 @@
 using System;
+using GIM.Quantities.Conversion;
 
 namespace GIM.Quantities {
     public class Volume : SimpleQuantity<VolumeUnit> {
@@ -53,6 +54,10 @@ namespace GIM.Quantities {
             if (!this.Unit.Equals(volume2.Unit))
                 throw new NotImplementedException("Units do not match");
             return this.Amount / volume2.Amount;
+        }
+
+        public Volume In(VolumeUnit unitTo) {
+            return VolumeConversion.Instance.Convert(this, unitTo);
         }
     }
 }

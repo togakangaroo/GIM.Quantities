@@ -30,5 +30,8 @@ namespace GIM.Quantities {
         public static Mass In(this Mass mass, Func<double, Mass> massUnitProvider) {
             return mass.In(massUnitProvider(1).Unit);
         }
+        public static Volume In(this Volume volume, Func<double, Volume> volumeUnitProvider) {
+            return volume.In(volumeUnitProvider(1).Unit);
+        }
     }
 }
