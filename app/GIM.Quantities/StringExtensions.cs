@@ -1,7 +1,7 @@
 using System;
 
 namespace GIM.Quantities {
-    public static class StringExtensions {
+    internal static class StringExtensions {
         public static Action<string> OutputAction = s => System.Diagnostics.Debug.WriteLine(s);
         public static string Use(this string format, params object[] args) {
             return String.Format(format, args);
@@ -10,7 +10,7 @@ namespace GIM.Quantities {
             OutputAction(msg);
         }
     }
-    public static class ObjectExtensions {
+    internal static class ObjectExtensions {
         public static bool IsNull(this object obj) {
             return object.ReferenceEquals(null, obj);
         }
