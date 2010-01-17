@@ -19,5 +19,9 @@ namespace GIM.Quantities.Tests.Conversion {
         public void Can_explicitly_convert_kgs_to_lbs_with_extension() {
             1.Kilograms().In(x=>x.Pounds()).ShouldEqualToPrecision(2.20462262.Pounds(), 8);
         }
+        [Test]
+        public void Can_explicitly_convert_tons_to_lbs_with_extension() {
+            1.Tons().In(x=>x.Pounds()).ShouldEqualToPrecision(2000.Pounds(), 8);
+        }
     }
 }

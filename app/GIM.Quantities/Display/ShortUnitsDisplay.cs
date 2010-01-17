@@ -9,6 +9,7 @@ namespace GIM.Quantities.Display {
                 new Dictionary<Func<UnitAtPlularity, bool>, Func<UnitAtPlularity, string>>() {
                 {u => u.Unit==MassUnit.Pounds, u =>u.ConvertPlural("lb")},
                 {u => u.Unit==MassUnit.Kilograms, u =>u.ConvertPlural("kg")},
+                {u => u.Unit==MassUnit.Tons, u =>u.ConvertPlural("ton")},
                 {u => u.Unit==VolumeUnit.Gallons, u =>u.ConvertPlural("gal")},
                 {u => u.Unit==VolumeUnit.Liters, u =>u.ConvertPlural("ltr")},
                 {u => u.Unit==VolumeUnit.Barrels, u =>u.ConvertPlural("brl")},
